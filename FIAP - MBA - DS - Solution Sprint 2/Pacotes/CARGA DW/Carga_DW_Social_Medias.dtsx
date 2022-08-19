@@ -1,0 +1,1498 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/13/2022 6:27:21 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN-0N5N0UGN9B2"
+  DTS:CreatorName="WIN-0N5N0UGN9B2\Administrator"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{29D57767-E696-42AA-9C3A-5A3D06F8009B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.5"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="Carga_DW_Social_Medias"
+  DTS:VersionGUID="{7AF809E5-AD66-4D58-8226-4DC4789A64CA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{14228F3D-133F-4A5F-B906-715670E0B26A}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=DW_PETZ;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionExcel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{7F97C8A7-B97B-4359-B0BF-E555FC1891CE}"
+      DTS:ObjectName="SourceConnectionExcel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\FIAP\Solution_Sprint\Datasets\Social_Media\Petz_RedesSociais.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{03068530-46B4-48B8-A259-249C4BA9037D}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - TB_Engagement$"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - TB_Engagement$"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TB_Engagement$]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].Columns[Plataforma]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Plataforma"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Plataforma]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Plataforma]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].Columns[Rede]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rede"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Rede]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Rede]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].Columns[Visitas Mensais]"
+                      cachedDataType="r8"
+                      cachedName="Visitas Mensais"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Visitas Mensais]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Visitas Mensais]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].Columns[Unique visitors]"
+                      cachedDataType="r8"
+                      cachedName="Unique visitors"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Unique visitors]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Unique visitors]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].Columns[Visits / Unique visitors]"
+                      cachedDataType="r8"
+                      cachedName="Visits / Unique visitors"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Visits / Unique visitors]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Visits / Unique visitors]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].Columns[Visit duration]"
+                      cachedDataType="date"
+                      cachedName="Visit duration"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Visit duration]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Visit duration]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].Columns[Pages/Visit]"
+                      cachedDataType="r8"
+                      cachedName="Pages/Visit"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Pages/Visit]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Pages/Visit]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].Columns[Bounce rate]"
+                      cachedDataType="r8"
+                      cachedName="Bounce rate"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Bounce rate]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Bounce rate]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Plataforma]"
+                      dataType="wstr"
+                      length="255"
+                      name="Plataforma" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Rede]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rede" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Visitas Mensais]"
+                      dataType="r8"
+                      name="Visitas Mensais" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Unique visitors]"
+                      dataType="r8"
+                      name="Unique visitors" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Visits / Unique visitors]"
+                      dataType="r8"
+                      name="Visits / Unique visitors" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Visit duration]"
+                      dataType="date"
+                      name="Visit duration" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Pages/Visit]"
+                      dataType="r8"
+                      name="Pages/Visit" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input].ExternalColumns[Bounce rate]"
+                      dataType="r8"
+                      name="Bounce rate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - TB_Engagement$.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Engagement$.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - TB_Engagement$.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 1 - TB_Inscritos$"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TB_Inscritos$]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].Columns[Rede]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rede"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].ExternalColumns[Rede]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Rede]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].Columns[Ano]"
+                      cachedDataType="r8"
+                      cachedName="Ano"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].ExternalColumns[Ano]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Ano]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].Columns[Mês]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Mês"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].ExternalColumns[Mês]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Mês]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].Columns[Inscritos]"
+                      cachedDataType="r8"
+                      cachedName="Inscritos"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].ExternalColumns[Inscritos]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Inscritos]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].Columns[Indice]"
+                      cachedDataType="r8"
+                      cachedName="Indice"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].ExternalColumns[Indice]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Indice]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].ExternalColumns[Rede]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rede" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].ExternalColumns[Ano]"
+                      dataType="r8"
+                      name="Ano" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].ExternalColumns[Mês]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mês" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].ExternalColumns[Inscritos]"
+                      dataType="r8"
+                      name="Inscritos" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input].ExternalColumns[Indice]"
+                      dataType="r8"
+                      name="Indice" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 2 - TB_RedesSociais$"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TB_RedesSociais$]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].Columns[Rede]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rede"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].ExternalColumns[Rede]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Rede]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].Columns[Endereco]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Endereco"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].ExternalColumns[Endereco]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Endereco]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].Columns[Inscritos]"
+                      cachedDataType="r8"
+                      cachedName="Inscritos"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].ExternalColumns[Inscritos]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Inscritos]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].Columns[Nota]"
+                      cachedDataType="r8"
+                      cachedName="Nota"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].ExternalColumns[Nota]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Nota]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].Columns[Reclamações]"
+                      cachedDataType="r8"
+                      cachedName="Reclamações"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].ExternalColumns[Reclamações]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Reclamações]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].Columns[Respondidas]"
+                      cachedDataType="r8"
+                      cachedName="Respondidas"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].ExternalColumns[Respondidas]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Respondidas]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].ExternalColumns[Rede]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rede" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].ExternalColumns[Endereco]"
+                      dataType="wstr"
+                      length="255"
+                      name="Endereco" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].ExternalColumns[Inscritos]"
+                      dataType="r8"
+                      name="Inscritos" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].ExternalColumns[Nota]"
+                      dataType="r8"
+                      name="Nota" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].ExternalColumns[Reclamações]"
+                      dataType="r8"
+                      name="Reclamações" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input].ExternalColumns[Respondidas]"
+                      dataType="r8"
+                      name="Respondidas" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Destination 3 - TB_Visits$"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination 3 - TB_Visits$"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TB_Visits$]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Inputs[Destination Input].Columns[Rede]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Rede"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Inputs[Destination Input].ExternalColumns[Rede]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].Columns[Rede]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Inputs[Destination Input].Columns[Dia]"
+                      cachedDataType="date"
+                      cachedName="Dia"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Inputs[Destination Input].ExternalColumns[Dia]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].Columns[Dia]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Inputs[Destination Input].Columns[Visitas]"
+                      cachedDataType="r8"
+                      cachedName="Visitas"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Inputs[Destination Input].ExternalColumns[Visitas]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].Columns[Visitas]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Inputs[Destination Input].ExternalColumns[Rede]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rede" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Inputs[Destination Input].ExternalColumns[Dia]"
+                      dataType="date"
+                      name="Dia" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Inputs[Destination Input].ExternalColumns[Visitas]"
+                      dataType="r8"
+                      name="Visitas" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - TB_Engagement$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - TB_Engagement$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">TB_Engagement$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - TB_Engagement$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Plataforma]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Plataforma]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Plataforma]"
+                      name="Plataforma"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Rede]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Rede]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Rede]"
+                      name="Rede"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Visitas Mensais]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Visitas Mensais]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Visitas Mensais]"
+                      name="Visitas Mensais"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Unique visitors]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Unique visitors]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Unique visitors]"
+                      name="Unique visitors"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Visits / Unique visitors]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Visits / Unique visitors]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Visits / Unique visitors]"
+                      name="Visits / Unique visitors"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Visit duration]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Visit duration]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Visit duration]"
+                      name="Visit duration"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Pages/Visit]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Pages/Visit]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Pages/Visit]"
+                      name="Pages/Visit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Bounce rate]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Bounce rate]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].Columns[Bounce rate]"
+                      name="Bounce rate"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Plataforma]"
+                      dataType="wstr"
+                      length="255"
+                      name="Plataforma" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Rede]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rede" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Visitas Mensais]"
+                      dataType="r8"
+                      name="Visitas Mensais" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Unique visitors]"
+                      dataType="r8"
+                      name="Unique visitors" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Visits / Unique visitors]"
+                      dataType="r8"
+                      name="Visits / Unique visitors" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Visit duration]"
+                      dataType="date"
+                      name="Visit duration" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Pages/Visit]"
+                      dataType="r8"
+                      name="Pages/Visit" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output].ExternalColumns[Bounce rate]"
+                      dataType="r8"
+                      name="Bounce rate" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Plataforma]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Plataforma]"
+                      name="Plataforma" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Rede]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Rede]"
+                      name="Rede" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Visitas Mensais]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Visitas Mensais]"
+                      name="Visitas Mensais" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Unique visitors]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Unique visitors]"
+                      name="Unique visitors" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Visits / Unique visitors]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Visits / Unique visitors]"
+                      name="Visits / Unique visitors" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Visit duration]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Visit duration]"
+                      name="Visit duration" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Pages/Visit]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Pages/Visit]"
+                      name="Pages/Visit" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Bounce rate]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[Bounce rate]"
+                      name="Bounce rate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source 1 - TB_Inscritos$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">TB_Inscritos$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Rede]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].ExternalColumns[Rede]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Rede]"
+                      name="Rede"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Ano]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].ExternalColumns[Ano]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Ano]"
+                      name="Ano"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Mês]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].ExternalColumns[Mês]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Mês]"
+                      name="Mês"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Inscritos]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].ExternalColumns[Inscritos]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Inscritos]"
+                      name="Inscritos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Indice]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].ExternalColumns[Indice]"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].Columns[Indice]"
+                      name="Indice"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].ExternalColumns[Rede]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rede" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].ExternalColumns[Ano]"
+                      dataType="r8"
+                      name="Ano" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].ExternalColumns[Mês]"
+                      dataType="wstr"
+                      length="255"
+                      name="Mês" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].ExternalColumns[Inscritos]"
+                      dataType="r8"
+                      name="Inscritos" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output].ExternalColumns[Indice]"
+                      dataType="r8"
+                      name="Indice" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[Rede]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[Rede]"
+                      name="Rede" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[Ano]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[Ano]"
+                      name="Ano" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[Mês]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[Mês]"
+                      name="Mês" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[Inscritos]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[Inscritos]"
+                      name="Inscritos" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[Indice]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[Indice]"
+                      name="Indice" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source 2 - TB_RedesSociais$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">TB_RedesSociais$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Rede]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].ExternalColumns[Rede]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Rede]"
+                      name="Rede"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Endereco]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].ExternalColumns[Endereco]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Endereco]"
+                      name="Endereco"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Inscritos]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].ExternalColumns[Inscritos]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Inscritos]"
+                      name="Inscritos"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Nota]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].ExternalColumns[Nota]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Nota]"
+                      name="Nota"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Reclamações]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].ExternalColumns[Reclamações]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Reclamações]"
+                      name="Reclamações"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Respondidas]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].ExternalColumns[Respondidas]"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].Columns[Respondidas]"
+                      name="Respondidas"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].ExternalColumns[Rede]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rede" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].ExternalColumns[Endereco]"
+                      dataType="wstr"
+                      length="255"
+                      name="Endereco" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].ExternalColumns[Inscritos]"
+                      dataType="r8"
+                      name="Inscritos" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].ExternalColumns[Nota]"
+                      dataType="r8"
+                      name="Nota" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].ExternalColumns[Reclamações]"
+                      dataType="r8"
+                      name="Reclamações" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output].ExternalColumns[Respondidas]"
+                      dataType="r8"
+                      name="Respondidas" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[Rede]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[Rede]"
+                      name="Rede" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[Endereco]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[Endereco]"
+                      name="Endereco" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[Inscritos]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[Inscritos]"
+                      name="Inscritos" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[Nota]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[Nota]"
+                      name="Nota" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[Reclamações]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[Reclamações]"
+                      name="Reclamações" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[Respondidas]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[Respondidas]"
+                      name="Respondidas" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source 3 - TB_Visits$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source 3 - TB_Visits$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">TB_Visits$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].Columns[Rede]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].ExternalColumns[Rede]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].Columns[Rede]"
+                      name="Rede"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].Columns[Dia]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].ExternalColumns[Dia]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].Columns[Dia]"
+                      name="Dia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].Columns[Visitas]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].ExternalColumns[Visitas]"
+                      lineageId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].Columns[Visitas]"
+                      name="Visitas"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].ExternalColumns[Rede]"
+                      dataType="wstr"
+                      length="255"
+                      name="Rede" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].ExternalColumns[Dia]"
+                      dataType="date"
+                      name="Dia" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output].ExternalColumns[Visitas]"
+                      dataType="r8"
+                      name="Visitas" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Error Output].Columns[Rede]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Error Output].Columns[Rede]"
+                      name="Rede" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Error Output].Columns[Dia]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Error Output].Columns[Dia]"
+                      name="Dia" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Error Output].Columns[Visitas]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Error Output].Columns[Visitas]"
+                      name="Visitas" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task 1\Destination - TB_Engagement$.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task 1\Source - TB_Engagement$.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[Excel Source Output1]"
+              endId="Package\Data Flow Task 1\Destination 1 - TB_Inscritos$.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task 1\Source 1 - TB_Inscritos$.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[Excel Source Output2]"
+              endId="Package\Data Flow Task 1\Destination 2 - TB_RedesSociais$.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task 1\Source 2 - TB_RedesSociais$.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Data Flow Task 1.Paths[Excel Source Output3]"
+              endId="Package\Data Flow Task 1\Destination 3 - TB_Visits$.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task 1\Source 3 - TB_Visits$.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{0864482A-90DB-4D76-9B12-890485297ECB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{14228F3D-133F-4A5F-B906-715670E0B26A}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[TB_Engagement$] (&#xA;[Plataforma] nvarchar(255),&#xA;[Rede] nvarchar(255),&#xA;[Visitas Mensais] float,&#xA;[Unique visitors] float,&#xA;[Visits / Unique visitors] float,&#xA;[Visit duration] datetime,&#xA;[Pages/Visit] float,&#xA;[Bounce rate] float&#xA;)&#xA;GO&#xA;CREATE TABLE [dbo].[TB_Inscritos$] (&#xA;[Rede] nvarchar(255),&#xA;[Ano] float,&#xA;[Mês] nvarchar(255),&#xA;[Inscritos] float,&#xA;[Indice] float&#xA;)&#xA;GO&#xA;CREATE TABLE [dbo].[TB_RedesSociais$] (&#xA;[Rede] nvarchar(255),&#xA;[Endereco] nvarchar(255),&#xA;[Inscritos] float,&#xA;[Nota] float,&#xA;[Reclamações] float,&#xA;[Respondidas] float&#xA;)&#xA;GO&#xA;CREATE TABLE [dbo].[TB_Visits$] (&#xA;[Rede] nvarchar(255),&#xA;[Dia] datetime,&#xA;[Visitas] float&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{9C386046-BA50-4458-A26A-12CD6F7FA360\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{9C386046-BA50-4458-A26A-12CD6F7FA360}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{9C386046-BA50-4458-A26A-12CD6F7FA360}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

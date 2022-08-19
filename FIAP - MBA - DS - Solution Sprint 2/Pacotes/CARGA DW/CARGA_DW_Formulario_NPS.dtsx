@@ -1,0 +1,468 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/12/2022 7:32:27 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN-0N5N0UGN9B2"
+  DTS:CreatorName="WIN-0N5N0UGN9B2\Administrator"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{6A68E650-5689-42D3-BB46-57E8322A7586}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.5"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="CARGA_DW_Formulario_NPS"
+  DTS:VersionGUID="{6162D3BA-28F0-422F-808F-3B27F942B4C6}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionExcel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{9373B072-436D-4DDA-B93C-0BF3EEB7500B}"
+      DTS:ObjectName="DestinationConnectionExcel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2B912E33-9EFD-44AA-9B2D-9A05F238D3BE}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=DW_PETZ;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionExcel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{1414DF81-20E4-4C58-9BBB-712A9147B515}"
+      DTS:ObjectName="SourceConnectionExcel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\FIAP\Solution_Sprint\Datasets\NPS\Formulario_nps.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{22235A55-C3B3-4D8B-8539-BEA1B8270D05}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - TB_Formulario_NPS"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[TB_Formulario_NPS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].Columns[Loja]"
+                      cachedDataType="r8"
+                      cachedName="Loja"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].ExternalColumns[Loja]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[Loja]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].Columns[Nome]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Nome"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].ExternalColumns[Nome]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[Nome]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].Columns[review_rating]"
+                      cachedDataType="nText"
+                      cachedName="review_rating"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].ExternalColumns[review_rating]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[review_rating]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].Columns[Comentário]"
+                      cachedDataType="nText"
+                      cachedName="Comentário"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].ExternalColumns[Comentário]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[Comentário]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].Columns[review_rating1]"
+                      cachedDataType="r8"
+                      cachedName="review_rating1"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].ExternalColumns[review_rating1]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[review_rating1]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].Columns[Datetime]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Datetime"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].ExternalColumns[Datetime]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[Datetime]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].ExternalColumns[Loja]"
+                      dataType="r8"
+                      name="Loja" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].ExternalColumns[Nome]"
+                      dataType="wstr"
+                      length="255"
+                      name="Nome" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].ExternalColumns[review_rating]"
+                      dataType="nText"
+                      name="review_rating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].ExternalColumns[Comentário]"
+                      dataType="nText"
+                      name="Comentário" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].ExternalColumns[review_rating1]"
+                      dataType="r8"
+                      name="review_rating1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input].ExternalColumns[Datetime]"
+                      dataType="wstr"
+                      length="255"
+                      name="Datetime" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - TB_Formulario_NPS$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">TB_Formulario_NPS$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[Loja]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].ExternalColumns[Loja]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[Loja]"
+                      name="Loja"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[Nome]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].ExternalColumns[Nome]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[Nome]"
+                      name="Nome"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[review_rating]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].ExternalColumns[review_rating]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[review_rating]"
+                      name="review_rating"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[Comentário]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].ExternalColumns[Comentário]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[Comentário]"
+                      name="Comentário"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[review_rating1]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].ExternalColumns[review_rating1]"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[review_rating1]"
+                      name="review_rating1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[Datetime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].ExternalColumns[Datetime]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].Columns[Datetime]"
+                      name="Datetime"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].ExternalColumns[Loja]"
+                      dataType="r8"
+                      name="Loja" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].ExternalColumns[Nome]"
+                      dataType="wstr"
+                      length="255"
+                      name="Nome" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].ExternalColumns[review_rating]"
+                      dataType="nText"
+                      name="review_rating" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].ExternalColumns[Comentário]"
+                      dataType="nText"
+                      name="Comentário" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].ExternalColumns[review_rating1]"
+                      dataType="r8"
+                      name="review_rating1" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output].ExternalColumns[Datetime]"
+                      dataType="wstr"
+                      length="255"
+                      name="Datetime" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[Loja]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[Loja]"
+                      name="Loja" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[Nome]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[Nome]"
+                      name="Nome" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[review_rating]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[review_rating]"
+                      name="review_rating" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[Comentário]"
+                      dataType="nText"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[Comentário]"
+                      name="Comentário" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[review_rating1]"
+                      dataType="r8"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[review_rating1]"
+                      name="review_rating1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[Datetime]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[Datetime]"
+                      name="Datetime" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task 1\Destination - TB_Formulario_NPS.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task 1\Source - TB_Formulario_NPS$.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{E125BEC5-A770-40E2-9F6B-F17F6BF16F12}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2B912E33-9EFD-44AA-9B2D-9A05F238D3BE}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[TB_Formulario_NPS] (&#xA;[Loja] float,&#xA;[Nome] nvarchar(255),&#xA;[review_rating] nvarchar(max),&#xA;[Comentário] nvarchar(max),&#xA;[review_rating1] float,&#xA;[Datetime] nvarchar(255)&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{1BEA6BC3-2DFE-48D3-89DD-5D616C2C4C82\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{1BEA6BC3-2DFE-48D3-89DD-5D616C2C4C82}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{1BEA6BC3-2DFE-48D3-89DD-5D616C2C4C82}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>

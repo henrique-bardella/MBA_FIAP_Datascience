@@ -1,0 +1,520 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/8/2022 7:27:58 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WIN-0N5N0UGN9B2"
+  DTS:CreatorName="WIN-0N5N0UGN9B2\Administrator"
+  DTS:Description="SSIS Package Description"
+  DTS:DTSID="{693E5BF3-2FD0-4527-826A-7CE27372B175}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.5"
+  DTS:LocaleID="1033"
+  DTS:MaxErrorCount="0"
+  DTS:ObjectName="CARGA_CRM_orders"
+  DTS:ProtectionLevel="0"
+  DTS:VersionGUID="{D5C85042-58AE-41E3-9F88-31A01FF6535D}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B0D4D426-404D-4EC4-BD60-6757A2D4A4F1}"
+      DTS:ObjectName="DestinationConnectionOLEDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=(local);Initial Catalog=CRM_PETZ_OLTP;Provider=SQLNCLI11;Integrated Security=SSPI;Auto Translate=false;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[SourceConnectionExcel]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{B5E7F2B5-2D57-47C3-889A-3B0F9E170ABA}"
+      DTS:ObjectName="SourceConnectionExcel">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\FIAP\Solution_Sprint\Datasets\CRM_PETZ_orders.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task 1"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:DelayValidation="True"
+      DTS:DTSID="{0662EB43-AC0F-45A2-9937-37EC6E64CC19}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task 1"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          defaultBufferSize="3145728"
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destination - CRM_PETZ_orders$"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[CRM_PETZ_orders$]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  connectionManagerRefId="Package.ConnectionManagers[DestinationConnectionOLEDB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].Columns[order_id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="order_id"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_id]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].Columns[customer_id]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="customer_id"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[customer_id]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[customer_id]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].Columns[order_status]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="order_status"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_status]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_status]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].Columns[order_purchase_timestamp]"
+                      cachedDataType="date"
+                      cachedName="order_purchase_timestamp"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_purchase_timestamp]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_purchase_timestamp]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].Columns[order_approved_at]"
+                      cachedDataType="date"
+                      cachedName="order_approved_at"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_approved_at]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_approved_at]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].Columns[order_delivered_carrier_date]"
+                      cachedDataType="date"
+                      cachedName="order_delivered_carrier_date"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_delivered_carrier_date]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_delivered_carrier_date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].Columns[order_delivered_customer_date]"
+                      cachedDataType="date"
+                      cachedName="order_delivered_customer_date"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_delivered_customer_date]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_delivered_customer_date]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].Columns[order_estimated_delivery_date]"
+                      cachedDataType="date"
+                      cachedName="order_estimated_delivery_date"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_estimated_delivery_date]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_estimated_delivery_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_id]"
+                      dataType="wstr"
+                      length="255"
+                      name="order_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[customer_id]"
+                      dataType="wstr"
+                      length="255"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_status]"
+                      dataType="wstr"
+                      length="255"
+                      name="order_status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_purchase_timestamp]"
+                      dataType="date"
+                      name="order_purchase_timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_approved_at]"
+                      dataType="date"
+                      name="order_approved_at" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_delivered_carrier_date]"
+                      dataType="date"
+                      name="order_delivered_carrier_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_delivered_customer_date]"
+                      dataType="date"
+                      name="order_delivered_customer_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input].ExternalColumns[order_estimated_delivery_date]"
+                      dataType="date"
+                      name="order_estimated_delivery_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Source - CRM_PETZ_orders$"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">CRM_PETZ_orders$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[SourceConnectionExcel]"
+                  connectionManagerRefId="Package.ConnectionManagers[SourceConnectionExcel]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_id]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_id]"
+                      name="order_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[customer_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[customer_id]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_status]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_status]"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_status]"
+                      name="order_status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_purchase_timestamp]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_purchase_timestamp]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_purchase_timestamp]"
+                      name="order_purchase_timestamp"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_approved_at]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_approved_at]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_approved_at]"
+                      name="order_approved_at"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_delivered_carrier_date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_delivered_carrier_date]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_delivered_carrier_date]"
+                      name="order_delivered_carrier_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_delivered_customer_date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_delivered_customer_date]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_delivered_customer_date]"
+                      name="order_delivered_customer_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_estimated_delivery_date]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_estimated_delivery_date]"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].Columns[order_estimated_delivery_date]"
+                      name="order_estimated_delivery_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_id]"
+                      dataType="wstr"
+                      length="255"
+                      name="order_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[customer_id]"
+                      dataType="wstr"
+                      length="255"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_status]"
+                      dataType="wstr"
+                      length="255"
+                      name="order_status" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_purchase_timestamp]"
+                      dataType="date"
+                      name="order_purchase_timestamp" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_approved_at]"
+                      dataType="date"
+                      name="order_approved_at" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_delivered_carrier_date]"
+                      dataType="date"
+                      name="order_delivered_carrier_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_delivered_customer_date]"
+                      dataType="date"
+                      name="order_delivered_customer_date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output].ExternalColumns[order_estimated_delivery_date]"
+                      dataType="date"
+                      name="order_estimated_delivery_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_id]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_id]"
+                      name="order_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[customer_id]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_status]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_status]"
+                      name="order_status" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_purchase_timestamp]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_purchase_timestamp]"
+                      name="order_purchase_timestamp" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_approved_at]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_approved_at]"
+                      name="order_approved_at" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_delivered_carrier_date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_delivered_carrier_date]"
+                      name="order_delivered_carrier_date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_delivered_customer_date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_delivered_customer_date]"
+                      name="order_delivered_customer_date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_estimated_delivery_date]"
+                      dataType="date"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[order_estimated_delivery_date]"
+                      name="order_estimated_delivery_date" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task 1.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task 1\Destination - CRM_PETZ_orders$.Inputs[Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task 1\Source - CRM_PETZ_orders$.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Preparation SQL Task 1"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:DTSID="{D006937B-43B2-447B-9E6D-BBB18D6AB122}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:FailPackageOnFailure="True"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Preparation SQL Task 1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{B0D4D426-404D-4EC4-BD60-6757A2D4A4F1}"
+          SQLTask:SqlStatementSource="CREATE TABLE [dbo].[CRM_PETZ_orders$] (&#xA;[order_id] nvarchar(255),&#xA;[customer_id] nvarchar(255),&#xA;[order_status] nvarchar(255),&#xA;[order_purchase_timestamp] datetime,&#xA;[order_approved_at] datetime,&#xA;[order_delivered_carrier_date] datetime,&#xA;[order_delivered_customer_date] datetime,&#xA;[order_estimated_delivery_date] datetime&#xA;)&#xA;GO&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[{91123B74-37ED-4E7A-AE57-AFAB36F0AC7E\}]"
+      DTS:CreationName=""
+      DTS:DTSID="{91123B74-37ED-4E7A-AE57-AFAB36F0AC7E}"
+      DTS:From="Package\Preparation SQL Task 1"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="{91123B74-37ED-4E7A-AE57-AFAB36F0AC7E}"
+      DTS:To="Package\Data Flow Task 1" />
+  </DTS:PrecedenceConstraints>
+</DTS:Executable>
